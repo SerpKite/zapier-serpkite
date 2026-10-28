@@ -1,0 +1,25 @@
+{
+  "name": "serpkite-zapier",
+  "version": "1.0.0",
+  "description": "SerpKite for Zapier: Google search, Maps, webpages, cited answers and AI assistant answers (ChatGPT, Gemini, Copilot Search, Google AI Mode, Brave) in Zaps.",
+  "homepage": "https://serpkite.com/integrations/zapier",
+  "repository": "github:SerpKite/zapier-serpkite",
+  "license": "MIT",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "jest --testTimeout 20000",
+    "validate": "zapier-platform validate --without-style"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "zapier-platform-core": "19.2.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nock": "^14.0.0",
+    "zapier-platform-cli": "19.2.1"
+  }
+}
