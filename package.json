@@ -1,6 +1,6 @@
 {
   "name": "serpkite-zapier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SerpKite for Zapier: Google search, Maps, webpages, cited answers and AI assistant answers (ChatGPT, Gemini, Copilot Search, Google AI Mode, Brave) in Zaps.",
   "homepage": "https://serpkite.com/integrations/zapier",
   "repository": "github:SerpKite/zapier-serpkite",

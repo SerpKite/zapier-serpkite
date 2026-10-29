@@ -1,6 +1,6 @@
 'use strict';
 
-const { PRICING, post, list, bool } = require('../lib/api');
+const { PRICING, post, list } = require('../lib/api');
 const f = require('../lib/fields');
 
 // REST hooks backed by SerpKite monitors: subscribing creates a monitor that posts to
@@ -74,7 +74,7 @@ const newAnswer = {
   noun: 'Answer',
   display: {
     label: 'New AI Assistant Answer',
-    description: 'Asks an AI assistant the same prompt on a schedule and triggers with every answer, its sources and your tracked brand mentions.',
+    description: 'Triggers when an AI assistant answers a prompt you watch: SerpKite asks it on a schedule and sends every answer, its sources and your tracked brand mentions.',
   },
   operation: {
     type: 'hook',
@@ -97,6 +97,17 @@ const newAnswer = {
         prompt: event.prompt,
         run_at: event.run_at,
       }));
+    },
+    // Sample data for the Zap editor: ask the assistant once now (billed like any answer).
+    performList: async (z, bundle) => {
+      const d = bundle.inputData;
+      const answer = await post(
+        z,
+        `/v1/${d.endpoint || 'brave_ai'}`,
+        { prompt: d.prompt, track: list(d.track), country: d.country },
+        { timeout: 45000 },
+      );
+      return [{ ...answer, id: `sample:${answer.meta ? answer.meta.request_id : Date.now()}`, assistant: d.endpoint, prompt: d.prompt }];
     },
     sample: {
       id: '01926a3e-7b2c-7c4e-9f1a-2b3c4d5e6f72',

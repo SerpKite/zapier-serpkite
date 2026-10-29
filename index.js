@@ -13,6 +13,8 @@ module.exports = {
   version: require('./package.json').version,
   platformVersion: require('zapier-platform-core').version,
   authentication,
+  // Inputs arrive as entered; lib/api.js drops empty values itself.
+  flags: { cleanInputData: false },
   beforeRequest: [addAuth],
   afterResponse: [handleErrors],
   triggers: byKey(triggers),
